@@ -15,7 +15,7 @@ var io = require('socket.io')(http, {
   pingInterval: 500
 });
 
-// BodyParser
+// BodyParsers
 app.use(bodyParser.urlencoded({
   extended: true
 }));
