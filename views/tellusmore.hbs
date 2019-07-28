@@ -1,0 +1,46 @@
+<div style="font-family: 'McLaren', cursive;">
+    <p class="text-center text-4xl">Welcome to Chatmosphere!</p>
+    <p class="text-center text-3xl">Please tell us more about you...</p>
+    <div class="flex justify-center">
+        <form id="tellusmore" name="tellusmore" class="w-3/5 bg-white flex justify-center pb-6 rounded-lg">
+            <div class="w-4/5">
+                <div class="w-full py-10">
+                    <p class="text-xl text-indigo-200 w-1/2">
+                        First Name: </p>
+                    <input
+                        class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                        type="text" name="firstname" id="firstname" placeholder="John" required>
+                </div>
+                <div class="w-full py-10">
+                    <p class="text-xl text-indigo-200 w-1/2">
+                        Last Name: </p>
+                    <input
+                        class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                        type="text" name="lastname" id="lastname" placeholder="Smith" required>
+                </div>
+                <div class="w-full py-10">
+                    <p class="text-xl text-indigo-200 w-1/2">
+                        Email Address: </p>
+                    <input
+                        class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                        type="email" name="email" id="email" placeholder="johnsmith@gmail.com" required>
+                </div>
+                <div class="w-full py-10">
+                    <p class="text-xl text-indigo-200 w-1/2">
+                        About You: </p>
+                    <textarea
+                        class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                        type="text" name="bio" id="bio" placeholder="Tell us a bit more about yourself"
+                        required> </textarea>
+                </div>
+                <div id="submit">
+                    <button type="submit"
+                        class="text-2xl tracking-wider bg-indigo-600 hover:bg-indigo-800 py-2 px-4 text-white rounded-full">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/assets/js/tellusmore.js"></script>

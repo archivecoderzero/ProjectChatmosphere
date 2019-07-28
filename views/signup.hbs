@@ -1,0 +1,96 @@
+<div class="h-screen w-screen bg-cover bg-center"
+  style="font-family: 'McLaren', cursive;">
+
+  <p class="text-center text-3xl lg:text-5xl mt-10 pb-10">Trust us, it's safer than Facebook</p>
+
+  <p class="text-center text-red-700 text-2xl mb-5">{{{message}}}</p>
+
+  <div class="w-screen flex mt-10 justify-center">
+
+    <div id="login-signup" class="rounded-lg overflow-hidden w-4/5 md:w-2/5 lg:w-1/5 shadow-lg">
+
+      <ul id="links" class="flex text-xl">
+        <li class="flex-1 text-center rounded-t-lg"><a href="#log-in-form">Log In</a></li>
+        <li class="flex-1 text-center rounded-t-lg active bg-white -mb-2"><a href="#sign-up-form">Sign Up</a></li>
+      </ul>
+
+      <div id="content" class="text-center bg-white">
+        {{!-- log in form --}}
+        <div id="log-in-form" class="tab">
+          <form id="login" name="login" method="post" action="login">
+            <div class="container">
+              <div class="flex py-12">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Username: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="text" name="username" placeholder="user123" required>
+              </div>
+              <div class="flex pb-12">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Password: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="password" name="password" placeholder="qwerty123" required>
+              </div>
+              <div class="flex pb-8 invisible">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Confirm: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="password" name="password2" placeholder="qwerty123... again">
+              </div>
+
+              <p class="pb-4">Forgot your <a href="#">password</a>?</p>
+              <button type="submit"
+                class="text-xl tracking-wider bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-4 mb-10 rounded-full">Let's
+                Chat!</button>
+            </div>
+          </form>
+        </div>
+
+        {{!-- sign up form --}}
+        <div id="sign-up-form" class="tab active">
+          <form id="signup" name="signup" method="post" action="signup">
+            <div class="container">
+
+              <div class="flex py-12">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Username: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="text" name="username" placeholder="user123" required>
+              </div>
+              <div class="flex pb-12">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Password: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="password" name="password" placeholder="qwerty123" required>
+              </div>
+              <div class="flex pb-8">
+                <p class="text-xl text-blue-500 w-1/2">
+                  Confirm: </p>
+                <input
+                  class="text-l appearance-none bg-transparent border-b-2 w-full text-gray-900 py-1 mx-4 leading-tight focus:outline-none focus:border-orange-300"
+                  type="password" name="password2" placeholder="qwerty123... again" required>
+              </div>
+
+              <p class="pb-4"><a href="#">Terms and Conditions</a></p>
+
+              <button type="submit"
+                class="text-xl tracking-wider bg-indigo-600 hover:bg-indigo-800 text-white py-2 px-4 mb-10 rounded-full">Let's
+                Go!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/assets/js/signup.js"></script>

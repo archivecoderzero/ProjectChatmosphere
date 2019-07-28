@@ -1,0 +1,42 @@
+{
+  "name": "AUTHtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha || true",
+    "start": "node server.js",
+    "build:css": "postcss public/assets/css/style.css -o public/assets/css/tailwind.css",
+    "watch": "watch \"npm run build:css\" ./views"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "connect-flash": "^0.1.1",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.0.0",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-session": "*",
+    "is-in-viewport": "^3.0.4",
+    "mysql2": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "passport-one-session-per-user": "^1.0.3",
+    "postcss": "^7.0.17",
+    "postcss-cli": "^6.1.3",
+    "sequelize": "*",
+    "sequelize-cli": "*",
+    "socket.io": "*",
+    "tailwindcss": "^1.0.5",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
