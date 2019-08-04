@@ -1,0 +1,17 @@
+<div class="block"
+          <div class="container">
+            {{#each random}}
+               <button id="random" onclick="window.location.href = '/chat/{{{this.username}}}';">CLICK</button>
+            {{/each}}
+          </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+ 
+  <script>
+    $("document").ready(function() {
+    setTimeout(function() {
+      $("#random").hide();
+      $("#random").trigger('click');
+    },1);
+});
+  </script>

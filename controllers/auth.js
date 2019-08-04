@@ -1,5 +1,6 @@
 var db = require("../models");
 const Op = db.Sequelize.Op;
+const sequelize = require('../models').sequelize
 
 module.exports = (app, passport) => {
 
@@ -48,6 +49,27 @@ module.exports = (app, passport) => {
   app.get('/tellusmore', isLoggedIn, (req, res) => {
     res.render('tellusmore');
   })
+
+    // RANDOMIZER -START : Routed
+    app.get('/random', isLoggedIn, (req, res) => {
+      db.user.findAll({
+        order: sequelize.random(),
+        where: {
+          username: {
+            [Op.ne]: req.user.username
+          }
+        }
+        , limit: 1
+      }
+      ).then(function (randomizer) {
+        var hbsObject = {
+          random: randomizer,
+        };
+        return res.render("random", hbsObject);
+      });
+    });
+    // RANDOMIZER -END: Routed
+  
 
   app.put("/api/tellusmore", function (req, res, next) {
 

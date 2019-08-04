@@ -35,109 +35,137 @@
               style="text-align: center; color: white; border-radius: 10px; padding: 10px;">
               <a href="/tellusmore" role="button">Edit Your Info</a>
             </button>
+            <hr>
+
+            <hr>
           </div>
         </div>
         <br>
         {{!-- user list --}}
         <div id="userList" class="text-left bg-white">
           <div class="container">
-            <h2><strong>Chat Users</strong></h2>
-            {{#each user}}
-            <ul class="flex items-center justify-between py-1 rounded-full" style="    background-color: #d8d8d8;
+            <hr>
+            <hr>
+            <div class="container" style="background-color: #b7c9c8;
+    margin-left: -14px;
+    border-radius: 9px;
+    padding: 5px;">
+    <br>
+              <div class="text-center">
+                <h2><strong>Chat With A Stranger </strong></h2>
+                <br>
+                <button class="bg-red-600 hover:bg-red-800"
+                  style="text-align: center; color: white; border-radius: 10px; padding: 10px;">
+                  <a href="/random" role="button">Chat Random</a>
+                </button>
+      </div>
+                <br>
+            </div>
+
+
+            <br>
+            <br>
+            <div class="text-center bg-white">
+              <h2><strong>Chat With Other Users: </strong></h2>
+              <br>
+              <br>
+
+              {{#each user}}
+              <ul class="flex items-center justify-between py-1 rounded-full" style="    background-color: #d8d8d8;
     margin-left: -10px;
     margin-right: 4px;">
-              <p class="ml-2">{{{this.username}}}</p>
-              <form action="/chat/{{{this.username}}}">
-                <a class="tracking-wider bg-indigo-600 hover:bg-indigo-800 text-white py-1 px-2 rounded-full justify-left"
-                  href="/chat/{{{this.username}}}" role="button">Chat!</a>
-              </form>
-            </ul>
-            <br>
-            {{/each}}
+                <p class="ml-2">{{{this.username}}}</p>
+                <form action="/chat/{{{this.username}}}">
+                  <a class="tracking-wider bg-indigo-600 hover:bg-indigo-800 text-white py-1 px-2 rounded-full justify-left"
+                    href="/chat/{{{this.username}}}" role="button">Chat!</a>
+                </form>
+              </ul>
+              <br>
+              {{/each}}
+            </div>
+
           </div>
 
         </div>
 
       </div>
-
     </div>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
 
-  <script>
-    $(document).ready(function () {
+    <script>
+      $(document).ready(function () {
 
-      var user = '{{{username}}}'
+        var user = '{{{username}}}'
 
-      $(function () {
-        var socket = io();
-        socket.on('new message', function (msg) {
+        $(function () {
+          var socket = io();
+          socket.on('new message', function (msg) {
 
-          console.log(msg.receiver);
-          console.log(user);
-          if (msg.receiver.toLowerCase() == user.toLowerCase()) {
-            showtoast(`You have a new message from ${msg.sender}`, `/chat/${msg.sender}`);
-          }
+            console.log(msg.receiver);
+            console.log(user);
+            if (msg.receiver.toLowerCase() == user.toLowerCase()) {
+              showtoast(`You have a new message from ${msg.sender}`, `/chat/${msg.sender}`);
+            }
 
+          });
         });
-      });
 
 
 
-      function ToastBuilder(options) {
-        // options are optional
-        var opts = options || {};
+        function ToastBuilder(options) {
+          // options are optional
+          var opts = options || {};
 
-        // setup some defaults
-        opts.defaultText = opts.defaultText || 'default text';
-        opts.displayTime = opts.displayTime || 5000;
-        opts.target = opts.target || 'body';
+          // setup some defaults
+          opts.defaultText = opts.defaultText || 'default text';
+          opts.displayTime = opts.displayTime || 5000;
+          opts.target = opts.target || 'body';
 
-        return function (text, link) {
-          $('<a>')
-            .attr("href", link)
-            .addClass('toast rounded-full')
-            .prependTo($(opts.target))
-            .text(text || opts.defaultText)
-            .queue(function (next) {
-              $(this).css({
-                'opacity': 1
-              });
-              var topOffset = 15;
-              $('.toast').each(function () {
+          return function (text, link) {
+            $('<a>')
+              .attr("href", link)
+              .addClass('toast rounded-full')
+              .prependTo($(opts.target))
+              .text(text || opts.defaultText)
+              .queue(function (next) {
+                $(this).css({
+                  'opacity': 1
+                });
+                var topOffset = 15;
+                $('.toast').each(function () {
+                  var $this = $(this);
+                  var height = $this.outerHeight();
+                  var offset = 15;
+                  $this.css('top', topOffset + 'px');
+
+                  topOffset += height + offset;
+                });
+                next();
+              })
+              .delay(opts.displayTime)
+              .queue(function (next) {
                 var $this = $(this);
-                var height = $this.outerHeight();
-                var offset = 15;
-                $this.css('top', topOffset + 'px');
-
-                topOffset += height + offset;
+                var width = $this.outerWidth() + 20;
+                $this.css({
+                  'right': '-' + width + 'px',
+                  'opacity': 0
+                });
+                next();
+              })
+              .delay(600)
+              .queue(function (next) {
+                $(this).remove();
+                next();
               });
-              next();
-            })
-            .delay(opts.displayTime)
-            .queue(function (next) {
-              var $this = $(this);
-              var width = $this.outerWidth() + 20;
-              $this.css({
-                'right': '-' + width + 'px',
-                'opacity': 0
-              });
-              next();
-            })
-            .delay(600)
-            .queue(function (next) {
-              $(this).remove();
-              next();
-            });
+          };
+        }
+        var myOptions = {
+          defaultText: 'Toast, yo!',
+          displayTime: 5000,
+          target: 'body'
         };
-      }
-      var myOptions = {
-        defaultText: 'Toast, yo!',
-        displayTime: 5000,
-        target: 'body'
-      };
-      var showtoast = new ToastBuilder(myOptions)
-    })
-  </script>
+        var showtoast = new ToastBuilder(myOptions)
+      })
+    </script>
