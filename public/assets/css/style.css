@@ -52,6 +52,7 @@ html {
 	        animation: bob 5s ease-in-out infinite both;
 }
 
+
  @-webkit-keyframes slide-in-blurred-left {
 	0% {
 	  -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
